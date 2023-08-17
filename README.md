@@ -40,35 +40,35 @@ b. Paste the recently downloaded two PHP libraries into the ***saml*** directory
 c. The ***php-saml*** library depends on the ***xmlseclibs*** library. We need to autoload all the ***xmlseclibs*** classes before loading ***php-saml*** classes. To autoload xmlseclibs classes, Open ***_toolkit_loader.php*** file which is located under the ***php-saml*** directory.
 
 
-    ```php
-    <?php
+```php
+<?php
 
 
-    // Create an __autoload function
-    // (can conflicts other autoloaders)
-    // http://php.net/manual/en/language.oop5.autoload.php
+// Create an __autoload function
+// (can conflicts other autoloaders)
+// http://php.net/manual/en/language.oop5.autoload.php
 
 
-    // Load composer vendor folder if any
-    if (file_exists(__DIR__ . '/vendor/autoload.php')) {
-    require __DIR__ . '/vendor/autoload.php';
-    }
+// Load composer vendor folder if any
+if (file_exists(__DIR__ . '/vendor/autoload.php')) {
+require __DIR__ . '/vendor/autoload.php';
+}
 
-    // Load xmlseclibs
-
-
-    $xmlseclibsSrcDir = '/public/application/saml/xmlseclibs/src';
-
-    include_once $xmlseclibsSrcDir.'/XMLSecEnc.php';
-    include_once $xmlseclibsSrcDir.'/XMLSecurityDSig.php';
-    include_once $xmlseclibsSrcDir.'/XMLSecurityKey.php';
-    include_once $xmlseclibsSrcDir.'/Utils/XPath.php';
+// Load xmlseclibs
 
 
-    // Load php-saml
-    $libDir = __DIR__ . '/src/Saml2/';
+$xmlseclibsSrcDir = '/public/application/saml/xmlseclibs/src';
 
-    ```
+include_once $xmlseclibsSrcDir.'/XMLSecEnc.php';
+include_once $xmlseclibsSrcDir.'/XMLSecurityDSig.php';
+include_once $xmlseclibsSrcDir.'/XMLSecurityKey.php';
+include_once $xmlseclibsSrcDir.'/Utils/XPath.php';
+
+
+// Load php-saml
+$libDir = __DIR__ . '/src/Saml2/';
+
+```
 
 Update ***$xmlseclibsSrcDir*** variable value to the path of *saml/xmlseclibs/src* directory.
 
