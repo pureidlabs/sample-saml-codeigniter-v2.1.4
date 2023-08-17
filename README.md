@@ -70,7 +70,7 @@ c. The ***php-saml*** library depends on the ***xmlseclibs*** library. We need t
 
     ```
 
-    Update ***$xmlseclibsSrcDir*** variable value to the path of *saml/xmlseclibs/src* directory.
+Update ***$xmlseclibsSrcDir*** variable value to the path of *saml/xmlseclibs/src* directory.
 
 
 ### 2. Creating a new controller to handle SAML Authentication
@@ -192,6 +192,18 @@ class Auth extends CI_Controller {
 ```
 
 c. Configuration of PureAUTH SAML
+
+1. Visit [PureAUTH N4CER Dashboard](http://live.pureauth.io).
+2. Go to *Applications* and click on *Add Application*
+3. Fill following details
+
+    1. Enter Application Name
+    2. Select Corporate Email in Dataset for Email dropdown
+    3. SAML RESPONSE URL (ACS URL)will be the ***/auth/acs*** endpoint of your application. For Example: http://localhost:8181/auth/acs
+    4. AUDIENCE (ENTITY ID) will be the ***/auth/login*** endpoint of your application. For Example: http://localhost:8181/auth/login
+    5. SAML LOGOUT RESPONSE URL (SLO URL) with be the ***/auth/logout*** endpoint of your application. For Example: http://localhost:8181/auth/logout
+    6. To Support IdP Initiated Flow: APP LOGIN URL will be the ***/auth/login*** endpoint of your application. For Example: http://localhost:8181/auth/login
+    7. Enable SIGN ASSERTION checkbox and Save Changes.
 
 Now, we have to configure the SP and IdP in the ***php-saml*** library.
 
